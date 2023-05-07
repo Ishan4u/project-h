@@ -1,4 +1,21 @@
+<?php
 
+    include 'components/connect.php';
+
+    if(isset($_POST['submit'])){
+
+        $name= $_POST['name'];
+        $email= $_POST['email'];
+        $pass = $_POST['pass'];
+        // $cpass = $_POST['cpass'];
+
+        $sql ="INSERT INTO users (name, email, password)  VALUES (?,?,?)";
+        $insert_user = $con->prepare($sql);
+        $insert_user->execute([$name, $email, $pass]);
+        echo 'inserted';
+    }
+
+?>
 
 <?php include 'components/header.php'; ?>
 
